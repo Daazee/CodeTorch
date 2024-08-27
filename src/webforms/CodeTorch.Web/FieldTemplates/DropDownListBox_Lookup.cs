@@ -271,7 +271,7 @@ namespace CodeTorch.Web.FieldTemplates
         {
             FirstLoad = false;
             ctrl.AutoPostBack = AutoPostBack;
-            ctrl.DataSource = GetData().Items;
+            ctrl.DataSource = GetData()?.Items;
             ctrl.DataBind();
 
             if (IncludeAdditionalListItem)

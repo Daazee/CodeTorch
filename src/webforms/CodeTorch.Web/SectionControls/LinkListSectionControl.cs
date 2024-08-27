@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using CodeTorch.Core;
+using System;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using CodeTorch.Core;
+using System.Web.UI.WebControls;
 
 namespace CodeTorch.Web.SectionControls
 {

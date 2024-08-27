@@ -752,31 +752,22 @@ namespace CodeTorch.Web.Templates
 
                     if (section.ContentPane.ToLower() == d.Name.ToLower())
                     {
+                        bool render = false;
 
-                        bool render = true;
-
-                        if (section is EditSection)
+                        switch (section.Mode)
                         {
-                            render = false;
-
-
-
-                            switch (section.Mode)
-                            {
-                                case SectionMode.Edit:
-                                    if (Mode == SectionMode.Edit)
-                                        render = true;
-                                    break;
-                                case SectionMode.Insert:
-                                    if (Mode == SectionMode.Insert)
-                                        render = true;
-                                    break;
-                                default:
+                            case SectionMode.Edit:
+                                if (Mode == SectionMode.Edit)
                                     render = true;
-                                    break;
-                            }
+                                break;
+                            case SectionMode.Insert:
+                                if (Mode == SectionMode.Insert)
+                                    render = true;
+                                break;
+                            default:
+                                render = true;
+                                break;
                         }
-
 
                         if (render)
                         {
@@ -784,21 +775,17 @@ namespace CodeTorch.Web.Templates
                             RenderSection(div, Screen, section, sectionResourcePrefixName);
                         }
                     }
-
-
                 }
                 catch (Exception ex)
                 {
                     string ErrorMessageFormat = "<span style='color:red'>ERROR - {0} - {1} - {2}</span>";
                     string ErrorMessages = String.Format(ErrorMessageFormat, ex.Message, section.Name, "BasePage.RenderPageSections");
 
-
                     div.Controls.Add(new LiteralControl(ErrorMessages));
                 }
 
             }
         }
-
 
         private static SectionZoneLayout GetZoneLayout(string screenLayout, SectionZoneLayout layout)
         {
